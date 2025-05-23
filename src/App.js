@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="Teste_git">
-    <h1>Hello Mundo</h1>
+    <div> 
+      <h1>Vamos Progamar, amo voces '3'</h1>
     </div>
+    
   );
 }
 
