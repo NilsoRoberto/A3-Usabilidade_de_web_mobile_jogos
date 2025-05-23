@@ -1,12 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './Fundo/Fundo.js'; 
+import Fundo from './Fundo/Fundo.js';
 function App() {
   return (
-    <div className="Teste_git">
-    <h1>Hello Mundo</h1>
-    </div>
+     <Fundo> </Fundo>
   );
 }
-
 export default App;
