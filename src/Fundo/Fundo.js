@@ -1,9 +1,18 @@
+import './Fundo.css';
+
 function Fundo() {
   return (
-    <div>
-      <h1>Bem-vindo!</h1>
-    </div>
+    <> 
+      <div className="ContainerCaixa">
+        <div className="Caixa1"> <p>ola</p> </div>
+        <div className="Caixa1"> <p>oi</p> </div>
+      </div>
+      <div className="terra">
+      </div>
+    </>
   );
 }
 
 export default Fundo;
+
+

@@ -1,0 +1,34 @@
+.terra {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../Imagens/pixel03.jpg'); 
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.conteudo {
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 90%;
+}
+.ContainerCaixa {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    height: 150px;
+    width: 150px;
+    border: 1px; 
+    background-image: url('../Imagens/caixaplantio.png');
+    background-position: center;
+}
+.Caixa1 {
+    background-color: aqua;
+    width: 40px;
+    height: 40px;
+}
