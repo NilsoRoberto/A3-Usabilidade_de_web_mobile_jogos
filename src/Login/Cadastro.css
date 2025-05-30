@@ -1,0 +1,17 @@
+.caixa_texto{
+    width: 500px;
+    height: 40px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 30px;
+    border-radius: 5px;
+    border: 2px solid #333;
+    margin-bottom: 30px;
+}
+
+.div_ajuste{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+}

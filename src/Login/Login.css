@@ -33,6 +33,7 @@
     padding: 0;
 }
 .eco {
+    cursor: pointer;
     color: #C1272D; 
     text-shadow:
     -3px -3px 0 #000,
@@ -45,6 +46,7 @@
      3px  0px 0 #000;
 }
 .farm {
+    cursor: pointer;
     color: #FFD700;
     text-shadow:
     -3px -3px 0 #000,
@@ -73,6 +75,7 @@
     
 }
 .botao_estilo{
+    cursor: pointer;
     margin-top: 20px;
     background-color: #555;
     color: #FFD700;
