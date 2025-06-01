@@ -2,6 +2,11 @@
     font-family: 'Pixel Emulator';
     src: url('../Fonte/Pixel Emulator.otf') format('opentype');
   }
+@keyframes flutuar {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
 .background{
     /*border: 2px solid red;*/
     position: absolute;
@@ -27,6 +32,8 @@
     text-align: center;
     font-family: 'Pixel Emulator', sans-serif;
     font-size: 150%;
+    animation: flutuar 3s ease-in-out infinite;
+    will-change: transform;
 }
 .logo{
     margin: 10px;
@@ -67,7 +74,7 @@
     flex-direction: column; 
 }
 .div_ajuste{
-    margin-top: 40px;
+    margin-top: 20px;
     width: 100%;
     display: flex;
     align-items: center;

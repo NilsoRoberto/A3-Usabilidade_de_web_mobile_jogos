@@ -10,7 +10,7 @@ function Botoes() {
             <div className="botao_estilo" onClick={() => navigate('/cadastro')}>
             <p>novo jogo</p>
             </div>
-            <div className="botao_estilo">
+            <div className="botao_estilo" onClick={() => navigate('/acesso')}>
             <p>continuar</p>
             </div>
             <div className="botao_estilo">
