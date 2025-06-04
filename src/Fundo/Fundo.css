@@ -1,34 +1,62 @@
 .terra {
   width: 100vw;
   height: 100vh;
-  background-image: url('../Imagens/pixel03.jpg'); 
+  background-image: url('../Imagens/1876_fundo.png'); 
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover; 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 1rem;
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
-.conteudo {
-    color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 90%;
-}
-.ContainerCaixa {
+
+.ContainerGeral {
     position: fixed;
-    top: 40px;
-    left: 40px;
-    height: 150px;
-    width: 150px;
-    border: 1px; 
-    background-image: url('../Imagens/caixaplantio.png');
-    background-position: center;
+    border: green solid 2px;
+    padding: 20px;
+    flex-direction: row;
+      grid-template-columns: repeat(2, 500px );  /* Largura das caixas */
+      grid-template-rows: repeat(2, 200px);     /* Altura das caixas */
+      gap: 10px 80px; /* Espaçamento entre caixas: vertical e horizontal */
+      position: fixed;
+      top: 50%;  /* Ajuste vertical */
+      left: 15%;
+      width: 1250px;
+      height: 380px;
 }
-.Caixa1 {
-    background-color: aqua;
-    width: 40px;
-    height: 40px;
+.ContainerCaixa1 {
+    border: solid yellow 5px;
+    position: fixed;
+    width: 550px;
+    height: 100px;
+    top: 58%;
+
 }
+.ContainerCaixa2 {
+   border: solid yellow 5px;
+    position: fixed;
+    width: 550px;
+    height: 100px;
+    top: 58%;
+    right: 18%;
+ 
+}
+.ContainerCaixa3 {
+    border: solid yellow 5px;
+    position: relative;
+    width: 550px;
+    height: 100px;
+    top: 58%; 
+}
+.ContainerCaixa4 {
+   border: solid yellow 5px;
+    position: absolute;
+    width: 550px;
+    height: 100px;
+    top: 58%;
+    right: 2%;  
+}
+
