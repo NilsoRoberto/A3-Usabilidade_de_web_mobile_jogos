@@ -6,7 +6,6 @@ function App() {
   return (
     <>
     <Botao_menu></Botao_menu>
-    <TanqueAgua></TanqueAgua>
     </>
   );
 }
