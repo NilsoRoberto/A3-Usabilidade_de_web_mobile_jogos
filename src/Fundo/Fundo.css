@@ -23,40 +23,44 @@
       gap: 10px 80px; /* Espaçamento entre caixas: vertical e horizontal */
       position: fixed;
       top: 50%;  /* Ajuste vertical */
-      left: 15%;
-      width: 1250px;
+      left: 13%;
+      width: 1350px;
       height: 380px;
 }
 .ContainerCaixa1 {
     border: solid yellow 5px;
-    position: fixed;
-    width: 550px;
-    height: 100px;
-    top: 58%;
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    top: 5%; 
+    padding: 10px;
 
 }
 .ContainerCaixa2 {
    border: solid yellow 5px;
-    position: fixed;
-    width: 550px;
-    height: 100px;
-    top: 58%;
-    right: 18%;
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    top: 210px;
+    padding: 10px;
  
 }
 .ContainerCaixa3 {
     border: solid yellow 5px;
-    position: relative;
-    width: 550px;
-    height: 100px;
-    top: 58%; 
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    
+    left: 52%; 
+    padding: 10px;
 }
 .ContainerCaixa4 {
    border: solid yellow 5px;
     position: absolute;
-    width: 550px;
-    height: 100px;
-    top: 58%;
-    right: 2%;  
+    width: 615px;
+    height: 155px;
+    top: 210px;
+    left: 52%; 
+    padding: 10px;
 }
 
