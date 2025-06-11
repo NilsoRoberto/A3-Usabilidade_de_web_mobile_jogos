@@ -1,0 +1,66 @@
+.terra {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../Imagens/1876_fundo.png'); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box; 
+}
+
+.ContainerGeral {
+    position: fixed;
+    border: green solid 2px;
+    padding: 20px;
+    flex-direction: row;
+      grid-template-columns: repeat(2, 500px );  /* Largura das caixas */
+      grid-template-rows: repeat(2, 200px);     /* Altura das caixas */
+      gap: 10px 80px; /* Espaçamento entre caixas: vertical e horizontal */
+      position: fixed;
+      top: 50%;  /* Ajuste vertical */
+      left: 13%;
+      width: 1350px;
+      height: 380px;
+}
+.ContainerCaixa1 {
+    border: solid yellow 5px;
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    top: 5%; 
+    padding: 10px;
+
+}
+.ContainerCaixa2 {
+   border: solid yellow 5px;
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    top: 210px;
+    padding: 10px;
+ 
+}
+.ContainerCaixa3 {
+    border: solid yellow 5px;
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    
+    left: 52%; 
+    padding: 10px;
+}
+.ContainerCaixa4 {
+   border: solid yellow 5px;
+    position: absolute;
+    width: 615px;
+    height: 155px;
+    top: 210px;
+    left: 52%; 
+    padding: 10px;
+}
+
