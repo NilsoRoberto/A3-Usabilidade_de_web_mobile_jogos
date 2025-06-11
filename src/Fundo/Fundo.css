@@ -8,68 +8,121 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  image-rendering: pixelated;
   z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  box-sizing: border-box; 
 }
 
+/* ContainerGeral da primeira versão (posicionado fixo com tamanho) */
+.ContainerGeral {
+    
+  position: fixed;
+  border: green solid 2px;
+  padding: 20px;
+  top: 50%;  /* Ajuste vertical */
+  left: 13%;
+  width: 1350px;
+  height: 380px;
+  display: flex; /* ou grid se preferir */
+  flex-direction: row;
+  gap: 4px 10px; /* linhas e colunas */
+
+  box-sizing: border-box;
+  z-index: 1; /* acima do fundo */
+}
+
+/* Caixas fixas com grid da segunda versão, mas tamanho e posicionamento da primeira */
 
 .ContainerCaixa1 {
-  position: fixed;
-  top: 246px;
-  left: 142px;
+  position: absolute; /* como na primeira */
+  top: 5%;
+  left: 0; /* ficou faltando na 1ª, vamos manter esquerda zero dentro do ContainerGeral */
+  width: 615px;
+  height: 155px;
+  
   display: grid;
-  grid-template-columns: repeat(7, 40px);
-  grid-template-rows: repeat(3, 45px);
+  grid-template-columns: repeat(7, 1fr); /* grid da 2ª versão */
+  grid-template-rows: repeat(3, auto);
   gap: 4px;
+  
+  background-color: rgba(255, 255, 0, 0.1);
+  border: 1px dashed orange;
+  padding: 10px;
+  box-sizing: border-box;
   z-index: 2;
 }
 
 .ContainerCaixa2 {
-  position: fixed;
-  top: 295px;
-  left: 142px;
+  position: absolute;
+  top: 210px;
+  left: 0;
+  width: 615px;
+  height: 155px;
+  
   display: grid;
-  grid-template-columns: repeat(7, 40px);
-  grid-template-rows: repeat(3, 45px);
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(3, auto);
   gap: 4px;
+  
+  background-color: rgba(255, 255, 0, 0.1);
+  border: 1px dashed orange;
+  padding: 10px;
+  box-sizing: border-box;
   z-index: 2;
 }
 
 .ContainerCaixa3 {
-  position: fixed;
-  top: 400px;
-  left: 60px;
+  position: absolute;
+  top: 5%;
+  left: 52%; /* como na primeira */
+  width: 615px;
+  height: 155px;
+
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(3, auto);
   gap: 4px;
-  overflow: hidden;
-  align-content: start;
-  justify-content: start;
+  
+  background-color: rgba(255, 255, 0, 0.1);
+  border: 1px dashed orange;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 .ContainerCaixa4 {
-  position: fixed;
-  top: 550px;
-  left: 60px;
+  position: absolute;
+  top: 210px;
+  left: 52%;
+  width: 615px;
+  height: 155px;
+
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(3, auto);
   gap: 4px;
-  overflow: hidden;
-  align-content: start;
-  justify-content: start;
+  
+  background-color: rgba(255, 255, 0, 0.1);
+  border: 1px dashed orange;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 .ContainerCaixa1,
 .ContainerCaixa2,
 .ContainerCaixa3,
 .ContainerCaixa4 {
-  background-color: rgba(255, 255, 0, 0.1); /* amarelo bem claro */
-  border: 1px dashed orange;
+  grid-template-columns: repeat(4, 1fr);  /* 4 colunas */
+  grid-template-rows: repeat(2, auto);    /* 2 linhas */
 }
+/* Planta e barra de progresso seguem a mesma da segunda versão */
 
-
-/* Cada planta + progresso */
 .planta-container {
   display: flex;
   flex-direction: column;
@@ -78,14 +131,20 @@
   box-sizing: border-box;
 }
 
-/* Planta */
 .planta-container img {
-  width: 40px;
-  height: 40px;
+   width: 60px;
+  height: 60px;
   image-rendering: pixelated;
 }
+.planta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
 
-/* Barra de progresso */
+
 .barra-progresso {
   width: 40px;
   height: 5px;

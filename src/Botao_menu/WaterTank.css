@@ -9,6 +9,7 @@
   overflow: hidden;
   background-color: #ccc;
   margin: 20px;
+  z-index: 1000;
 }
 
 .water {
@@ -23,6 +24,7 @@
   transition: height 0.8s ease-in-out;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  z-index: 1000;
 }
 
 @keyframes waveMove {
@@ -65,4 +67,5 @@
   position: fixed;
   bottom: 500px;
   left: 500px;
+  z-index: 1000;
 }

@@ -1,6 +1,6 @@
 import './Fundo.css';
 import Planta from '../Componentes/Planta';
-import planta1 from '../Imagens/planta.png'; // ajuste se necessário
+import planta1 from '../Imagens/teste1.png'; // ajuste se necessário
 import { useState } from 'react';
 
 function Fundo() {
@@ -21,8 +21,8 @@ function Fundo() {
 
     setCaixas(prev => {
       const plantasAtuais = prev[caixa];
-      if (plantasAtuais.length >= 21) {
-        alert("Limite de 21 plantas por caixa atingido!");
+      if (plantasAtuais.length >= 7 ) {
+        alert("Limite de 8 plantas por caixa atingido!");
         return prev;
       }
 

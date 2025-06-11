@@ -3,7 +3,7 @@ import TanqueAgua from './TanqueAgua';
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import Planta from '../Plantas/Planta.js';
-import planta1 from '../Imagens/planta.png';
+import planta1 from '../Imagens/teste1.png';
 
 function Botao_menu() {
   const [mostrarConteudo, setMostrarConteudo] = useState(false);
