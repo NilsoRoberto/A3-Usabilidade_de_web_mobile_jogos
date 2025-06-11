@@ -1,9 +1,12 @@
+import Botao_menu from './Botao_menu/Botao_menu';
+import TanqueAgua from './Botao_menu/TanqueAgua';
+import './App.css';
+
 function App() {
   return (
-    <div> 
-      <h1>Vamos Progamar, amo voces '3'</h1>
-    </div>
-    
+    <>
+    <Botao_menu></Botao_menu>
+    </>
   );
 }
 
