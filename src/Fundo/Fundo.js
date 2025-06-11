@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 function Fundo() {
   const [caixas, setCaixas] = useState({
-    caixa1: null,
-    caixa2: null,
-    caixa3: null,
-    caixa4: null,
+    caixa1: [],
+    caixa2: [],
+    caixa3: [],
+    caixa4: [],
   });
 
   function allowDrop(e) {
@@ -17,60 +17,85 @@ function Fundo() {
 
   function handleDrop(e, caixa) {
     const imagem = e.dataTransfer.getData("planta");
-    setCaixas(prev => ({
-      ...prev,
-      [caixa]: imagem
-    }));
+    if (!imagem) return;
+
+    setCaixas(prev => {
+      const plantasAtuais = prev[caixa];
+      if (plantasAtuais.length >= 21) {
+        alert("Limite de 21 plantas por caixa atingido!");
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [caixa]: [...plantasAtuais, { id: Date.now(), imagem, progresso: 0 }]
+      };
+    });
   }
 
   return (
-    <> 
-      {/* <div className="inventario"> 
-        <h3>Inventário</h3>
-
-        <Planta imagem={planta1} nome="Planta 1" />
-      </div> */}
-
+    <>
+    <div className="terra"></div>
       <div className="ContainerGeral">
-        <div
-          className='ContainerCaixa1'
-          onDragOver={allowDrop}
-          onDrop={(e) => handleDrop(e, 'caixa1')}
-        >
-          {caixas.caixa1 && <img src={caixas.caixa1} alt="Planta" width="60" />}
+        <div className="ContainerCaixa1" onDragOver={allowDrop} onDrop={(e) => handleDrop(e, 'caixa1')}>
+          {caixas.caixa1.map(planta => (
+            <div key={planta.id} className="planta-container">
+              <img src={planta.imagem} alt="Planta" />
+              <div className="barra-progresso">
+                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
+              </div>
+            </div>
+          ))}
         </div>
 
         <div
-          className='ContainerCaixa2'
+          className='ContainerCaixa ContainerCaixa2'
           onDragOver={allowDrop}
           onDrop={(e) => handleDrop(e, 'caixa2')}
         >
-          {caixas.caixa2 && <img src={caixas.caixa2} alt="Planta" width="60" />}
+          {caixas.caixa2.map(planta => (
+            <div key={planta.id} className="planta-container">
+              <img src={planta.imagem} alt="Planta" width="50" />
+              <div className="barra-progresso">
+                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
+              </div>
+            </div>
+          ))}
         </div>
 
         <div
-          className='ContainerCaixa3'
+          className='ContainerCaixa ContainerCaixa3'
           onDragOver={allowDrop}
           onDrop={(e) => handleDrop(e, 'caixa3')}
         >
-          {caixas.caixa3 && <img src={caixas.caixa3} alt="Planta" width="60" />}
+          {caixas.caixa3.map(planta => (
+            <div key={planta.id} className="planta-container">
+              <img src={planta.imagem} alt="Planta" width="50" />
+              <div className="barra-progresso">
+                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
+              </div>
+            </div>
+          ))}
         </div>
 
         <div
-          className='ContainerCaixa4'
+          className='ContainerCaixa ContainerCaixa4'
           onDragOver={allowDrop}
           onDrop={(e) => handleDrop(e, 'caixa4')}
         >
-          {caixas.caixa4 && <img src={caixas.caixa4} alt="Planta" width="60" />}
+          {caixas.caixa4.map(planta => (
+            <div key={planta.id} className="planta-container">
+              <img src={planta.imagem} alt="Planta" width="50" />
+              <div className="barra-progresso">
+                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="terra"></div>
     </>
   );
 }
 
 export default Fundo;
-
-
-

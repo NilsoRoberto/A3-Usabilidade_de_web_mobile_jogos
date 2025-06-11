@@ -1,66 +1,103 @@
 .terra {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-image: url('../Imagens/1876_fundo.png'); 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-  box-sizing: border-box; 
+  background-size: cover;
+  z-index: 0;
 }
 
-.ContainerGeral {
-    position: fixed;
-    border: green solid 2px;
-    padding: 20px;
-    flex-direction: row;
-      grid-template-columns: repeat(2, 500px );  /* Largura das caixas */
-      grid-template-rows: repeat(2, 200px);     /* Altura das caixas */
-      gap: 10px 80px; /* Espaçamento entre caixas: vertical e horizontal */
-      position: fixed;
-      top: 50%;  /* Ajuste vertical */
-      left: 13%;
-      width: 1350px;
-      height: 380px;
-}
+
 .ContainerCaixa1 {
-    border: solid yellow 5px;
-    position: absolute;
-    width: 615px;
-    height: 155px;
-    top: 5%; 
-    padding: 10px;
-
+  position: fixed;
+  top: 246px;
+  left: 142px;
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  grid-template-rows: repeat(3, 45px);
+  gap: 4px;
+  z-index: 2;
 }
+
 .ContainerCaixa2 {
-   border: solid yellow 5px;
-    position: absolute;
-    width: 615px;
-    height: 155px;
-    top: 210px;
-    padding: 10px;
- 
-}
-.ContainerCaixa3 {
-    border: solid yellow 5px;
-    position: absolute;
-    width: 615px;
-    height: 155px;
-    
-    left: 52%; 
-    padding: 10px;
-}
-.ContainerCaixa4 {
-   border: solid yellow 5px;
-    position: absolute;
-    width: 615px;
-    height: 155px;
-    top: 210px;
-    left: 52%; 
-    padding: 10px;
+  position: fixed;
+  top: 295px;
+  left: 142px;
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  grid-template-rows: repeat(3, 45px);
+  gap: 4px;
+  z-index: 2;
 }
 
+.ContainerCaixa3 {
+  position: fixed;
+  top: 400px;
+  left: 60px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 4px;
+  overflow: hidden;
+  align-content: start;
+  justify-content: start;
+}
+
+.ContainerCaixa4 {
+  position: fixed;
+  top: 550px;
+  left: 60px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 4px;
+  overflow: hidden;
+  align-content: start;
+  justify-content: start;
+}
+
+.ContainerCaixa1,
+.ContainerCaixa2,
+.ContainerCaixa3,
+.ContainerCaixa4 {
+  background-color: rgba(255, 255, 0, 0.1); /* amarelo bem claro */
+  border: 1px dashed orange;
+}
+
+
+/* Cada planta + progresso */
+.planta-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;  /* garante centralização */
+  box-sizing: border-box;
+}
+
+/* Planta */
+.planta-container img {
+  width: 40px;
+  height: 40px;
+  image-rendering: pixelated;
+}
+
+/* Barra de progresso */
+.barra-progresso {
+  width: 40px;
+  height: 5px;
+  background-color: #ccc;
+  margin-top: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progresso {
+  height: 100%;
+  background-color: green;
+  width: 0%;
+  transition: width 0.3s ease-in-out;
+}

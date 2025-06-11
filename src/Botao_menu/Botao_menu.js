@@ -2,6 +2,8 @@ import './Botao_menu.css';
 import TanqueAgua from './TanqueAgua';
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
+import Planta from '../Plantas/Planta.js';
+import planta1 from '../Imagens/planta.png';
 
 function Botao_menu() {
   const [mostrarConteudo, setMostrarConteudo] = useState(false);
@@ -43,6 +45,7 @@ function Botao_menu() {
 
   return (
     <>
+      {/* Botão principal 
       <button className="botao-pontos" onClick={adicionarPonto}>Adicionar 100 pontos</button>
       <p>{pontos}</p>
 
@@ -113,7 +116,11 @@ function Botao_menu() {
               <div className='texto-estilo'><h2>Inventário</h2></div>
               <button className='botao-fechar-inventario' onClick={toggleConteudoInv}></button>
             </div>
-            <div className='inv'></div>
+            <div className='inv'>
+
+               <Planta imagem={planta1} nome="Cenoura" />
+
+            </div>
           </motion.div>
         )}
 
