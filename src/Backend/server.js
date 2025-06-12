@@ -137,6 +137,27 @@ app.post('/verify-code', async (req, res) => {
   }
 });
 
+// Resetar senha - endpoint corrigido
+app.post('/reset-password', async (req, res) => {
+  const { email, novaSenha } = req.body;
+
+  try {
+    const result = await pool.query(
+      'UPDATE login SET senha = $1 WHERE email = $2 RETURNING *',
+      [novaSenha, email]
+    );
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'Usuário não encontrado.' });
+    }
+
+    res.json({ message: 'Senha atualizada com sucesso.' });
+  } catch (error) {
+    console.error("Erro ao atualizar senha:", error);
+    res.status(500).json({ message: 'Erro ao atualizar senha.' });
+  }
+});
+
 // Inicia o servidor
 const PORT = 3001;
 app.listen(PORT, () => {

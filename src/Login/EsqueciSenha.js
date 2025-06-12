@@ -15,8 +15,9 @@ function EsqueciSenha() {
 
       // Espera 5 segundos antes de redirecionar
       setTimeout(() => {
+        localStorage.setItem("emailRecuperacao", email);
         navigate('/verificar-codigo', { state: { email } });
-      }, 5000);
+      }, 1500);
     } catch (erro) {
       console.error("❌ Erro ao enviar:", erro);
       setMensagem(erro.response?.data?.message || "Erro ao enviar.");
@@ -47,7 +48,7 @@ function EsqueciSenha() {
             <p>enviar</p>
           </div>
 
-          {mensagem && <p>{mensagem}</p>}
+          {mensagem && <p className='bemvindo'>{mensagem}</p>}
         </div>
       </div>
     </div>

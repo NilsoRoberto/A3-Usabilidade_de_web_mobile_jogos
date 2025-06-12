@@ -22,6 +22,9 @@ function Cadastro() {
       if (response.ok) {
         setMensagem(<span className="bemvindo">Cadastro concluido com sucesso!</span>);
         //navigate("/");  // redireciona para a página inicial (ou a que desejar)
+        setTimeout(() => {
+          navigate("/", { state: { email } });
+        }, 1000);
       } else {
         const errorData = await response.json();
         setMensagem(<span className="erro">{errorData.error || "Erro desconhecido"}</span>);
