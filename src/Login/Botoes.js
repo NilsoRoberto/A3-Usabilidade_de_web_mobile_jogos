@@ -8,13 +8,13 @@ function Botoes() {
         <div className="botoes">
         <div className="div_ajuste">
             <div className="botao_estilo" onClick={() => navigate('/cadastro')}>
-            <p>novo jogo</p>
+            <p>cadastrar</p>
             </div>
             <div className="botao_estilo" onClick={() => navigate('/acesso')}>
-            <p>continuar</p>
+            <p>logar</p>
             </div>
-            <div className="botao_estilo">
-            <p>sair</p>
+            <div className="botao_estilo" onClick={() => navigate('/sobre')}>
+            <p>sobre</p>
             </div>
         </div>
         </div>

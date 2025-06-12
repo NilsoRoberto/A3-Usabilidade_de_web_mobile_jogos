@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./Cadastro.css"; // ou Acesso.css, dependendo de onde estão seus estilos
+import { Link } from 'react-router-dom';
+import "./Cadastro.css";
 
 function Acesso() {
   const navigate = useNavigate();
@@ -58,8 +59,8 @@ function Acesso() {
               placeholder="senha"
               onChange={(e) => setSenha(e.target.value)}
             />
+            <Link to="/esqueci-senha" className="teste">Esqueci minha senha</Link>
           </div>
-
           <button className="botao" onClick={handleSubmit}>
             Entrar
           </button>

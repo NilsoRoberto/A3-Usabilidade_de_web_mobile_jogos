@@ -71,3 +71,23 @@
       -2px  2px 0 #000,
        2px  2px 0 #000;
 }
+
+.esqueceu_senha_fonte{
+    font-size: 15px;
+    text-align: left;
+    width: 500px;
+    height: 45px;
+}
+
+.sobre_titulo{
+    font-size: 40px;
+}
+
+.sobre_texto{
+    font-size: 20px;
+    height: 220px;
+    text-align: justify;
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
