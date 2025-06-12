@@ -117,9 +117,17 @@ function Botao_menu() {
               <button className='botao-fechar-inventario' onClick={toggleConteudoInv}></button>
             </div>
             <div className='inv'>
+ 
+              <div className='ContainerInv'>
+                <div className='FormatacaoVegetal'>
+                  <div>Nome</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Quantidade</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Preco</div>
 
-               <Planta imagem={planta1} nome="Cenoura" />
-
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

@@ -122,6 +122,26 @@
   padding: 10px;
   border-radius: 20px;
 }
+.ContainerInv {
+  height: 100px;
+  width: 350px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ccc;
+  left: 30%;
+   
+}
+.FormatacaoVegetal {
+ position: fixed;
+ height: 30px;
+ width: 200px;
+ right: 6%;
+ border-radius: 10px;
+ gap: 20px;
+ align-items: center;
+  
+}
+
 
 .inv{
   background-color: #fff5e9;
