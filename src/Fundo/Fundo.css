@@ -22,9 +22,8 @@
 .ContainerGeral {
     
   position: fixed;
-  border: green solid 2px;
   padding: 20px;
-  top: 50%;  /* Ajuste vertical */
+  top: 58%;  /* Ajuste vertical */
   left: 13%;
   width: 1350px;
   height: 380px;
@@ -51,7 +50,6 @@
   gap: 4px;
   
   background-color: #4a2a05;
-  border: 1px dashed orange;
   padding: 10px;
   box-sizing: border-box;
   z-index: 2;
@@ -69,8 +67,7 @@
   grid-template-rows: repeat(3, auto);
   gap: 4px;
   
-  background-color: rgba(255, 255, 0, 0.1);
-  border: 1px dashed orange;
+  background-color: #4a2a05;
   padding: 10px;
   box-sizing: border-box;
   z-index: 2;
@@ -89,7 +86,6 @@
   gap: 4px;
   
   background-color: #4a2a05;
-  border: 1px dashed orange;
   padding: 10px;
   box-sizing: border-box;
   z-index: 2;
@@ -107,8 +103,7 @@
   grid-template-rows: repeat(3, auto);
   gap: 4px;
   
-  background-color: rgba(255, 255, 0, 0.1);
-  border: 1px dashed orange;
+  background-color: #4a2a05;
   padding: 10px;
   box-sizing: border-box;
   z-index: 2;
@@ -120,6 +115,7 @@
 .ContainerCaixa4 {
   grid-template-columns: repeat(4, 1fr);  /* 4 colunas */
   grid-template-rows: repeat(2, auto);    /* 2 linhas */
+  border-radius: 20px;
 }
 /* Planta e barra de progresso seguem a mesma da segunda versão */
 

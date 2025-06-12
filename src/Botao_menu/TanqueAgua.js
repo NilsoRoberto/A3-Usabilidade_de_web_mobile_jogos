@@ -34,7 +34,6 @@ const upgradeAgua = () => {
       <div className="water" style={{ height: `${waterLevel}%` }}>
       </div>
       <button className='button-water' onClick={useWater}>Usar Água</button>
-      <p>{intervalTime}</p>
     </div>
   );
 };
