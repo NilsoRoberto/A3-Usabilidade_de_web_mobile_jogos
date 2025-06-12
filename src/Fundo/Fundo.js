@@ -21,7 +21,7 @@ function Fundo() {
 
     setCaixas(prev => {
       const plantasAtuais = prev[caixa];
-      if (plantasAtuais.length >= 7 ) {
+      if (plantasAtuais.length >= 8 ) {
         alert("Limite de 8 plantas por caixa atingido!");
         return prev;
       }

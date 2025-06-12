@@ -50,7 +50,7 @@
   grid-template-rows: repeat(3, auto);
   gap: 4px;
   
-  background-color: rgba(255, 255, 0, 0.1);
+  background-color: #4a2a05;
   border: 1px dashed orange;
   padding: 10px;
   box-sizing: border-box;
@@ -88,7 +88,7 @@
   grid-template-rows: repeat(3, auto);
   gap: 4px;
   
-  background-color: rgba(255, 255, 0, 0.1);
+  background-color: #4a2a05;
   border: 1px dashed orange;
   padding: 10px;
   box-sizing: border-box;
