@@ -24,9 +24,9 @@ function App() {
         <Route path="/verificar-codigo" element={<VerificarCodigo />} />
         <Route path='/sobre' element={<Sobre />}/>
       </Routes>
-    </Router>
-    <Botao_menu></Botao_menu>
-    <Fundo> </Fundo>
+    </Router>                 
+    {/* <Botao_menu></Botao_menu>
+    <Fundo> </Fundo>*/}
     </>
   );
 }
