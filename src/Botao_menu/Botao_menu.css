@@ -125,22 +125,74 @@
 .ContainerInv {
   height: 100px;
   width: 350px;
-  padding: 10px;
+  overflow: hidden; 
   border-radius: 10px;
   background-color: #ccc;
   left: 30%;
+  gap: 20px;
+  display: flex;
+  padding: 10px 15px;
+
    
 }
-.FormatacaoVegetal {
- position: fixed;
- height: 30px;
- width: 200px;
- right: 6%;
- border-radius: 10px;
- gap: 20px;
- align-items: center;
-  
+.ContainerImagem {
+  position: relative;
+  height: auto;
+  width: 80px;
+  border: #3e2e1e 5px;
+  z-index: 1000;
+  border-radius: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+.PlantaIcon {
+  background-image: url("/src/Imagens/Planta.png");;
+  background-size: cover;
+  background-position: cover;
+  z-index: 1000;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+}
+.ContainerInf {
+  position: relative;
+  height: auto;
+  width: 150px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.containerScroll {
+  height: 300px;               /* altura visível da div */
+  overflow-y: auto;            /* ativa a scroll bar vertical quando necessário */
+  padding: 0px;
+  position: fi;
+}
+.containerScroll::-webkit-scrollbar {
+  width: 8px;                  /* largura da barra */
+}
+
+.containerScroll::-webkit-scrollbar-track {
+  background: #f1f1f1;      /* cor do fundo da trilha */
+  border-radius: 4px;
+}
+
+.containerScroll::-webkit-scrollbar-thumb {
+  background: #888;         /* cor da barra de rolagem */
+  border-radius: 4px;
+}
+
+.containerScroll::-webkit-scrollbar-thumb:hover {
+  background: #555;         /* cor quando passar o mouse */
+}
+.containerScroll {
+  width: 400px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 
 
 .inv{

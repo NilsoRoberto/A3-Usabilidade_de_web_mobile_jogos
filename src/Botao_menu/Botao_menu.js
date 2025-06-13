@@ -50,8 +50,8 @@ function Botao_menu() {
       <p>{pontos}</p>
 
       {/* Botão principal */}
-      <motion.div 
-        className="botao-redondo" 
+      <motion.div
+        className="botao-redondo"
         onClick={toggleConteudo}
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -63,12 +63,12 @@ function Botao_menu() {
       {/* Menu lateral */}
       <AnimatePresence>
         {mostrarConteudo && (
-          <motion.div 
+          <motion.div
             className="menu-lateral"
             animate={{ x: [0, 80], opacity: [0, 20, 40, 100] }}
             exit={{ opacity: 0, scale: 0.95, x: 80, transition: { duration: 0.5, ease: "easeInOut" } }}
             transition={{ duration: 1.2, ease: "easeInOut" }}
-          > 
+          >
             <motion.div
               className='container'
               onClick={toggleConteudoInv}
@@ -117,9 +117,22 @@ function Botao_menu() {
               <button className='botao-fechar-inventario' onClick={toggleConteudoInv}></button>
             </div>
             <div className='inv'>
+              <div className="containerScroll">
+                <div className='ContainerInv'>
+                  <div
+                    className='ContainerImagem'>
+                    <div className='PlantaIcon'></div>
+                  </div>
+                  <div className='ContainerInf'>
+                    <p>Nome</p>
+                    <p>Quantidade</p>
+                    <p>Preco</p>
+                  </div>
  
-              <div className='ContainerInv'>
-                <div className='FormatacaoVegetal'>
+                </div>
+                <div style={{ marginBottom: '20px' }}></div>
+
+                <div className='ContainerInv'>
                   <div>Nome</div>
                   <div style={{ marginBottom: '20px' }}></div>
                   <div>Quantidade</div>
@@ -127,6 +140,37 @@ function Botao_menu() {
                   <div>Preco</div>
 
                 </div>
+                <div style={{ marginBottom: '20px' }}></div>
+
+                <div className='ContainerInv'>
+                  <div>Nome</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Quantidade</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Preco</div>
+
+                </div>
+                <div style={{ marginBottom: '20px' }}></div>
+
+                <div className='ContainerInv'>
+                  <div>Nome</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Quantidade</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Preco</div>
+
+                </div>
+                <div style={{ marginBottom: '20px' }}></div>
+
+                <div className='ContainerInv'>
+                  <div>Nome</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Quantidade</div>
+                  <div style={{ marginBottom: '20px' }}></div>
+                  <div>Preco</div>
+                </div>
+
+
               </div>
             </div>
           </motion.div>
@@ -154,8 +198,8 @@ function Botao_menu() {
                   <motion.div whileTap={{ scale: 0.80, y: 2 }} transition={{ type: "spring", stiffness: 300 }}>
                     <button
                       className="botao_loja"
-                      style={{ 
-                        backgroundColor: pontos < precoUpgradeAgua ? '#EB5757' : '#6FCF97' 
+                      style={{
+                        backgroundColor: pontos < precoUpgradeAgua ? '#EB5757' : '#6FCF97'
                       }}
                       onClick={() => {
                         if (pontos >= precoUpgradeAgua && upgradeAguaFn) {
