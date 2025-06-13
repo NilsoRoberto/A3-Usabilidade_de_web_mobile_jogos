@@ -91,3 +91,19 @@
     margin-right: 10px;
     margin-left: 10px;
 }
+
+.div_correcao_reset{
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+.bemvindo_validado{
+    text-shadow:
+      -2px -2px 0 #000,
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000;
+}

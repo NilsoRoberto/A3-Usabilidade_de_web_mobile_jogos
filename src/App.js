@@ -11,6 +11,7 @@ import EsqueciSenha from './Login/EsqueciSenha';
 import VerificarCodigo from './Login/VerificarCodigo';
 import "./Login/Login.css";
 import Sobre from "./Login/Sobre";
+import ResetSenha from './Login/ResetSenha';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/esqueci-senha" element={<EsqueciSenha />} />
         <Route path="/verificar-codigo" element={<VerificarCodigo />} />
         <Route path='/sobre' element={<Sobre />}/>
+        <Route path='/reset' element={<ResetSenha />}/>
       </Routes>
     </Router>                 
     {/* <Botao_menu></Botao_menu>

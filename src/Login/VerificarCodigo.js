@@ -32,7 +32,7 @@ function VerificarCodigo() {
       // Aguarda 1.5s e redireciona se sucesso
       if (resposta.data.message.toLowerCase().includes("válido")) {
         setTimeout(() => {
-          navigate("/nova-senha", { state: { email } });
+          navigate("/reset", { state: { email } });
         }, 1500);
       }
 
@@ -50,7 +50,7 @@ function VerificarCodigo() {
           <span className="farm">farm</span>
         </h1>
 
-        <div className="div_correcao">
+        <div className="div_correcao_reset">
           <p style={{ marginBottom: 10 }}>
             Um código foi enviado para o email: <strong>{email}</strong>
           </p>
@@ -68,7 +68,7 @@ function VerificarCodigo() {
           </div>
 
           {mensagem && (
-            <p
+            <p className='bemvindo_validado'
               style={{
                 marginTop: 10,
                 color:
