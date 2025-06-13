@@ -1,0 +1,93 @@
+.caixa_texto{
+    width: 500px;
+    height: 40px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 30px;
+    border-radius: 5px;
+    border: 2px solid #333;
+}
+
+.div_correcao{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+.botao{
+    margin-top: 0;
+    width: 250px;
+    height: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: #555;
+    color: #FFD700;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 70%;
+    padding: 1px 1px;
+    border: 3px solid #000;
+    outline: 3px solid #999;
+    box-shadow: inset -2px -2px 0 #222, inset 2px 2px 0 #888;
+    text-shadow:
+      -2px -2px 0 #000,
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+}
+
+.botao:hover{
+    width: 250px;
+    height: 50px;
+    background-color: #777;
+    color: #ffe75d;
+    filter: brightness(1.1);
+    text-shadow:
+    -2px -2px 0 rgb(51, 51, 51),
+     2px -2px 0 rgb(51, 51, 51),
+    -2px  2px 0 rgb(51, 51, 51),
+     2px  2px 0 rgb(51, 51, 51);
+    border: 3px solid rgb(51, 51, 51);
+    outline: 3px solid #c7c7c7;
+    box-shadow: inset -2px -2px 0 #7a7a7a, inset 2px 2px 0 #888;
+}
+
+.bemvindo{
+    color: rgb(212, 212, 5);
+    text-shadow:
+      -2px -2px 0 #000,
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000;
+}
+
+.erro{
+    color: red;
+    text-shadow:
+      -2px -2px 0 #000,
+       2px -2px 0 #000,
+      -2px  2px 0 #000,
+       2px  2px 0 #000;
+}
+
+.esqueceu_senha_fonte{
+    font-size: 15px;
+    text-align: left;
+    width: 500px;
+    height: 45px;
+}
+
+.sobre_titulo{
+    font-size: 40px;
+}
+
+.sobre_texto{
+    font-size: 20px;
+    height: 220px;
+    text-align: justify;
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
