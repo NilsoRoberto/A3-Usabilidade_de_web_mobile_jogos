@@ -24,10 +24,10 @@ const upgradeAgua = () => {
 };
   // Passa a função para fora, se fornecido
   useEffect(() => {
-    if (onRegisterUpgrade) {
-      onRegisterUpgrade(upgradeAgua);
-    }
-  }, [onRegisterUpgrade]);
+  if (onRegisterUpgrade) {
+    onRegisterUpgrade(() => upgradeAgua); // <- Passa função corretamente
+  }
+}, [onRegisterUpgrade]);
 
   return (
     <div className="tank-container">

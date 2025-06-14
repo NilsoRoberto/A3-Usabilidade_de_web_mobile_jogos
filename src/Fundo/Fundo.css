@@ -1,10 +1,11 @@
+/* Fundo */
 .terra {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../Imagens/1876_fundo.png'); 
+  background-image: url('../Imagens/1876_fundo.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,125 +14,82 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 1rem;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
-/* ContainerGeral da primeira versão (posicionado fixo com tamanho) */
+/* Container geral */
 .ContainerGeral {
-    
   position: fixed;
-  padding: 20px;
-  top: 58%;  /* Ajuste vertical */
+  top: 58%;
   left: 13%;
   width: 1350px;
   height: 380px;
-  display: flex; /* ou grid se preferir */
-  flex-direction: row;
-  gap: 4px 10px; /* linhas e colunas */
-
+  display: flex;
+  gap: 10px;
   box-sizing: border-box;
-  z-index: 1; /* acima do fundo */
+  z-index: 1;
 }
 
-/* Caixas fixas com grid da segunda versão, mas tamanho e posicionamento da primeira */
-
-.ContainerCaixa1 {
-  position: absolute; /* como na primeira */
-  top: 5%;
-  left: 0; /* ficou faltando na 1ª, vamos manter esquerda zero dentro do ContainerGeral */
-  width: 615px;
-  height: 155px;
-  
-  display: grid;
-  grid-template-columns: repeat(7, 1fr); /* grid da 2ª versão */
-  grid-template-rows: repeat(3, auto);
-  gap: 4px;
-  
-  background-color: #4a2a05;
-  padding: 10px;
-  box-sizing: border-box;
-  z-index: 2;
-}
-
-.ContainerCaixa2 {
-  position: absolute;
-  top: 210px;
-  left: 0;
-  width: 615px;
-  height: 155px;
-  
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 4px;
-  
-  background-color: #4a2a05;
-  padding: 10px;
-  box-sizing: border-box;
-  z-index: 2;
-}
-
-.ContainerCaixa3 {
-  position: absolute;
-  top: 5%;
-  left: 52%; /* como na primeira */
-  width: 615px;
-  height: 155px;
-
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 4px;
-  
-  background-color: #4a2a05;
-  padding: 10px;
-  box-sizing: border-box;
-  z-index: 2;
-}
-
-.ContainerCaixa4 {
-  position: absolute;
-  top: 210px;
-  left: 52%;
-  width: 615px;
-  height: 155px;
-
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(3, auto);
-  gap: 4px;
-  
-  background-color: #4a2a05;
-  padding: 10px;
-  box-sizing: border-box;
-  z-index: 2;
-}
-
+/* Caixas */
 .ContainerCaixa1,
 .ContainerCaixa2,
 .ContainerCaixa3,
 .ContainerCaixa4 {
-  grid-template-columns: repeat(4, 1fr);  /* 4 colunas */
-  grid-template-rows: repeat(2, auto);    /* 2 linhas */
+  position: absolute;
+  width: 615px;
+  height: 155px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  background-color: #4a2a05;
+  padding: 10px;
   border-radius: 20px;
-}
-/* Planta e barra de progresso seguem a mesma da segunda versão */
-
-.planta-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;  /* garante centralização */
   box-sizing: border-box;
+  z-index: 2;
 }
 
-.planta-container img {
-   width: 60px;
-  height: 60px;
-  image-rendering: pixelated;
+/* Posições das caixas */
+.ContainerCaixa1 {
+  top: 5%;
+  left: 0;
 }
+
+.ContainerCaixa2 {
+  top: 210px;
+  left: 0;
+}
+
+.ContainerCaixa3 {
+  top: 5%;
+  left: 52%;
+}
+
+.ContainerCaixa4 {
+  top: 210px;
+  left: 52%;
+}
+
+/* Slot */
+.slot {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  margin-left: 40px;
+}
+
+/* Espaço vazio */
+.espaco-vazio {
+  width: 60px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Planta */
 .planta-container {
   display: flex;
   flex-direction: column;
@@ -140,7 +98,13 @@
   box-sizing: border-box;
 }
 
+.planta-container img {
+  width: 60px;
+  height: 60px;
+  image-rendering: pixelated;
+}
 
+/* Barra de progresso */
 .barra-progresso {
   width: 40px;
   height: 5px;
@@ -155,4 +119,37 @@
   background-color: green;
   width: 0%;
   transition: width 0.3s ease-in-out;
+}
+
+/* Brilho quando está pronto */
+.brilho {
+  position: relative;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 5px 2px #fdfd96;
+  }
+  50% {
+    box-shadow: 0 0 15px 5px #fff700;
+  }
+  100% {
+    box-shadow: 0 0 5px 2px #fdfd96;
+  }
+}
+
+/* Score */
+.score-display {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  z-index: 999;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }

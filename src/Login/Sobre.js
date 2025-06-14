@@ -15,7 +15,11 @@ function Sobre() {
         </h1>
 
         <div>
-          <p className="sobre_texto">Duis mollit minim esse aliqua aliqua proident ad laboris aute nisi et anim. Id fugiat labore nostrud est et magna exercitation nulla. Exercitation anim minim do anim dolore commodo ullamco id ut quis. Pariatur aliqua anim anim magna in. Culpa ad pariatur fugiat elit occaecat consequat ex officia. Reprehenderit magna consectetur velit aute sunt sunt veniam do in aliqua non commodo culpa. Enim commodo laborum est aliquip labore dolor et veniam.</p>
+          <p className="sobre_texto">Na EcoFarm, acreditamos que grandes mudanças começam em casa. Nosso jogo é uma ferramenta educativa criada para conscientizar sobre a importância do combate ao desperdício, de forma divertida e interativa.
+<br />
+<br />Por meio do plantio de alimentos e cuidados com a natureza, os jogadores aprendem na prática como pequenas ações podem gerar grandes impactos. Aqui, ensinar o cultivo responsável é também ensinar a valorizar os recursos que temos.
+<br />
+<br />EcoFarm é mais que um jogo — é uma semente de mudança plantada com conhecimento e diversão. </p>
         </div>
       </div>
     </div>

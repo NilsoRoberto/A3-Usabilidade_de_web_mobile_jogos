@@ -1,99 +1,208 @@
 import './Fundo.css';
-import Planta from '../Componentes/Planta';
-import planta1 from '../Imagens/teste1.png'; // ajuste se necessário
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Botao_menu from '../Botao_menu/Botao_menu';
+import TanqueAgua from '../Botao_menu/TanqueAgua';
+import imgVazia from '../Imagens/teste1.png';
+import listaPlantas from '../Plantas/listaPlantas';
 
 function Fundo() {
+  const tanqueRef = useRef();
+  const [score, setScore] = useState(0);
+  const [inventario, setInventario] = useState([]);
+
+  const [upgradeAguaFunc, setUpgradeAguaFunc] = useState(null);
+  const handleRegisterUpgrade = (funcaoUpgrade) => {
+    setUpgradeAguaFunc(() => funcaoUpgrade);
+  };
+
   const [caixas, setCaixas] = useState({
-    caixa1: [],
-    caixa2: [],
-    caixa3: [],
-    caixa4: [],
+    caixa1: Array(8).fill(null),
+    caixa2: Array(8).fill(null),
+    caixa3: Array(8).fill(null),
   });
 
-  function allowDrop(e) {
-    e.preventDefault();
-  }
+  const allowDrop = (e) => e.preventDefault();
 
-  function handleDrop(e, caixa) {
-    const imagem = e.dataTransfer.getData("planta");
-    if (!imagem) return;
+  const regarPlanta = (caixa, index) => {
+    const tanque = tanqueRef.current;
+    if (tanque.waterLevel <= 0) {
+      alert("Sem água no tanque!");
+      return;
+    }
+
+    tanque.useWater(10);
 
     setCaixas(prev => {
-      const plantasAtuais = prev[caixa];
-      if (plantasAtuais.length >= 8 ) {
-        alert("Limite de 8 plantas por caixa atingido!");
+      const novaCaixa = [...prev[caixa]];
+      const planta = novaCaixa[index];
+
+      if (planta && !planta.morta) {
+        if (planta.fase >= planta.fases.length - 1) return prev;
+
+        planta.progresso = Math.min(planta.progresso + 10, 100);
+        if (planta.progresso >= 100) {
+          planta.fase += 1;
+          planta.progresso = 0;
+          planta.tempoUltimaFase = Date.now();
+        }
+      }
+
+      return { ...prev, [caixa]: novaCaixa };
+    });
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCaixas(prev => {
+        const novo = { ...prev };
+
+        for (let caixa in novo) {
+          novo[caixa] = novo[caixa].map(planta => {
+            if (!planta) return null;
+
+            const tempoParado = Date.now() - (planta.tempoUltimaFase || Date.now());
+
+            if (planta.fase === planta.fases.length - 1 && tempoParado >= planta.tempoMorte) {
+              return { ...planta, morta: true };
+            }
+
+            if (!planta.morta) {
+              const novoProgresso = Math.max(planta.progresso - 1, 0);
+              return { ...planta, progresso: novoProgresso };
+            }
+
+            return planta;
+          });
+        }
+
+        return novo;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleDrop = (e, caixa, index) => {
+    e.preventDefault();
+    const tipoPlanta = e.dataTransfer.getData("planta");
+    if (!tipoPlanta || !listaPlantas[tipoPlanta]) return;
+
+    setCaixas(prev => {
+      const novaCaixa = [...prev[caixa]];
+      if (novaCaixa[index]) {
+        alert("Este espaço já está ocupado!");
         return prev;
       }
 
-      return {
-        ...prev,
-        [caixa]: [...plantasAtuais, { id: Date.now(), imagem, progresso: 0 }]
+      const dadosPlanta = listaPlantas[tipoPlanta];
+
+      novaCaixa[index] = {
+        id: Date.now(),
+        tipo: tipoPlanta,
+        fases: dadosPlanta.fases,
+        imagemMorta: dadosPlanta.imagemMorta,
+        tempoMorte: dadosPlanta.tempoMorte,
+        recompensa: dadosPlanta.recompensa,
+        fase: 0,
+        progresso: 0,
+        tempoUltimaFase: Date.now(),
+        morta: false
       };
+
+      return { ...prev, [caixa]: novaCaixa };
     });
-  }
+  };
+
+  const removerPlanta = (caixa, index) => {
+    setCaixas(prev => {
+      const novaCaixa = [...prev[caixa]];
+      novaCaixa[index] = null;
+      return { ...prev, [caixa]: novaCaixa };
+    });
+  };
+
+  const colherPlanta = (caixa, index) => {
+    const planta = caixas[caixa][index];
+    setScore(prev => prev + (planta?.recompensa || 0));
+
+    setCaixas(prev => {
+      const novaCaixa = [...prev[caixa]];
+      novaCaixa[index] = null;
+      return { ...prev, [caixa]: novaCaixa };
+    });
+  };
 
   return (
     <>
-    <div className="terra"></div>
+      <Botao_menu
+        score={score}
+        setScore={setScore}
+        inventario={inventario}
+        setInventario={setInventario}
+        upgradeAgua={upgradeAguaFunc}
+      />
+
+      <TanqueAgua ref={tanqueRef} onRegisterUpgrade={handleRegisterUpgrade} />
+
+      <div className="score-display">🌟 Score: {score}</div>
+      <div className="terra"></div>
+
       <div className="ContainerGeral">
-        <div className="ContainerCaixa1" onDragOver={allowDrop} onDrop={(e) => handleDrop(e, 'caixa1')}>
-          {caixas.caixa1.map(planta => (
-            <div key={planta.id} className="planta-container">
-              <img src={planta.imagem} alt="Planta" />
-              <div className="barra-progresso">
-                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
+        {['caixa1', 'caixa2', 'caixa3'].map((nomeCaixa, caixaIndex) => (
+          <div key={nomeCaixa} className={`ContainerCaixa${caixaIndex + 1}`}>
+            {Array(8).fill().map((_, index) => {
+              const planta = caixas[nomeCaixa][index];
+              const plantaCrescida = planta && !planta.morta && planta.fase === planta.fases.length - 1;
 
-        <div
-          className='ContainerCaixa ContainerCaixa2'
-          onDragOver={allowDrop}
-          onDrop={(e) => handleDrop(e, 'caixa2')}
-        >
-          {caixas.caixa2.map(planta => (
-            <div key={planta.id} className="planta-container">
-              <img src={planta.imagem} alt="Planta" width="50" />
-              <div className="barra-progresso">
-                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div
-          className='ContainerCaixa ContainerCaixa3'
-          onDragOver={allowDrop}
-          onDrop={(e) => handleDrop(e, 'caixa3')}
-        >
-          {caixas.caixa3.map(planta => (
-            <div key={planta.id} className="planta-container">
-              <img src={planta.imagem} alt="Planta" width="50" />
-              <div className="barra-progresso">
-                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div
-          className='ContainerCaixa ContainerCaixa4'
-          onDragOver={allowDrop}
-          onDrop={(e) => handleDrop(e, 'caixa4')}
-        >
-          {caixas.caixa4.map(planta => (
-            <div key={planta.id} className="planta-container">
-              <img src={planta.imagem} alt="Planta" width="50" />
-              <div className="barra-progresso">
-                <div className="progresso" style={{ width: `${planta.progresso}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
+              return (
+                <div
+                  key={index}
+                  className="slot"
+                  onDragOver={allowDrop}
+                  onDrop={(e) => handleDrop(e, nomeCaixa, index)}
+                >
+                  {planta ? (
+                    <div className={`planta-container ${plantaCrescida ? 'brilho' : ''}`}>
+                      <img
+                        src={planta.morta ? planta.imagemMorta : planta.fases[planta.fase]}
+                        alt="Planta"
+                        width="50"
+                        style={{ cursor: 'pointer' }}
+                        onClick={() => {
+                          if (planta.morta) return;
+                          if (plantaCrescida) {
+                            colherPlanta(nomeCaixa, index);
+                          } else {
+                            regarPlanta(nomeCaixa, index);
+                          }
+                        }}
+                        onMouseDown={(e) => {
+                          if (planta.morta) {
+                            const timeout = setTimeout(() => removerPlanta(nomeCaixa, index), 1500);
+                            const clear = () => clearTimeout(timeout);
+                            e.target.addEventListener('mouseup', clear, { once: true });
+                            e.target.addEventListener('mouseleave', clear, { once: true });
+                          }
+                        }}
+                      />
+                      {!planta.morta && !plantaCrescida && (
+                        <div className="barra-progresso">
+                          <div
+                            className="progresso"
+                            style={{ width: `${planta.progresso}%` }}
+                          />
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <img src={imgVazia} alt="Espaço vazio" className="espaco-vazio" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
-
     </>
   );
 }

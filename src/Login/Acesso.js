@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import "./Cadastro.css";
+import Botao_menu from '../Botao_menu/Botao_menu.js';
+
 
 function Acesso() {
   const navigate = useNavigate();
@@ -24,13 +26,14 @@ function Acesso() {
       if (response.ok) {
         setMensagem(<span className="bemvindo">Bem-vindo, {data.nome}!</span>);
         // redireciona para a página principal ou dashboard após 1 segundo
-       // setTimeout(() => {
-      //    navigate("/"); // ou para a página desejada, tipo: navigate('/dashboard')
-      //  }, 1000);
+       setTimeout(() => {
+         navigate("/menu"); // ou para a página desejada, tipo: navigate('/dashboard')
+        }, 1000);
       } else {
         setMensagem(<span className="erro">{data.error}</span>);
       }
     } catch (error) {
+      navigate("/menu") // ou para a página desejada, tipo: navigate('/dashboard')
       setMensagem(<span className="erro">Erro ao conectar com o servidor.</span>);
     }
   };

@@ -25,6 +25,7 @@ function App() {
         <Route path="/verificar-codigo" element={<VerificarCodigo />} />
         <Route path='/sobre' element={<Sobre />}/>
         <Route path='/reset' element={<ResetSenha />}/>
+        <Route path="/menu" element={<Fundo />} />
       </Routes>
     </Router>                 
     {/* <Botao_menu></Botao_menu>
