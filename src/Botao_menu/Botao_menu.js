@@ -153,16 +153,20 @@ function Botao_menu({ score, setScore, inventario, setInventario, upgradeAgua })
               {inventario.length === 0 && <h4>Inventário vazio.</h4>}
               {inventario.map((nomePlanta, i) => {
                 const plantaData = listaPlantas[nomePlanta];
-                if (!plantaData) return null;
+
+                if (!plantaData) {
+                  console.warn(`Planta não encontrada no listaPlantas: ${nomePlanta}`);
+                  return null;
+                }
 
                 return (
                   <img
                     key={i}
-                    src={plantaData.fases[0]}
+                    src={plantaData.imagemFoto}
                     alt={nomePlanta}
                     draggable
                     onDragStart={e => e.dataTransfer.setData("planta", nomePlanta)}
-                    style={{ width: 50, cursor: 'grab', borderRadius: 6 }}
+                    style={{ height: 50, width: 50, cursor: 'grab', borderRadius: 6 }}
                     title={`Arraste para plantar: ${nomePlanta}`}
                   />
                 );
@@ -283,24 +287,29 @@ function Botao_menu({ score, setScore, inventario, setInventario, upgradeAgua })
                     }}
                   >
 
-                    
+
                     <img
-                      src={planta.fases[0]}
+                      src={planta.imagemFoto}
                       alt={planta.nome}
                       style={{
-                        width: "120px",
-                        height: "120px",
+                        border: "2px solid brown",
+                        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                        cursor: "pointer",
+                        width: "80px",
+                        height: "80px",
                         borderRadius: "50%",
                         objectFit: "cover",
                         padding: "5px",
                       }}
                     />
                     <span>{planta.nome}</span>
-                    <span>💰 {planta.preco}</span>
+                    <div className="botao_loja-vegan">
+                      <span>Comprar 💰 {planta.preco}</span>
+                    </div>
 
-                    
+
                   </div>
-                  
+
                 ))}
               </div>
             </div>

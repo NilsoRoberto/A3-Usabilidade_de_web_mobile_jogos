@@ -7,7 +7,7 @@ import listaPlantas from '../Plantas/listaPlantas';
 
 function Fundo() {
   const tanqueRef = useRef();
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(1000);
   const [inventario, setInventario] = useState([]);
 
   const [upgradeAguaFunc, setUpgradeAguaFunc] = useState(null);
@@ -30,7 +30,7 @@ function Fundo() {
       return;
     }
 
-    tanque.useWater(10);
+    tanque.useWater(1);
 
     setCaixas(prev => {
       const novaCaixa = [...prev[caixa]];
@@ -39,10 +39,10 @@ function Fundo() {
       if (planta && !planta.morta) {
         if (planta.fase >= planta.fases.length - 1) return prev;
 
-        planta.progresso = Math.min(planta.progresso + 10, 100);
+        planta.progresso = Math.min(planta.progresso + 5, 100);
         if (planta.progresso >= 100) {
           planta.fase += 1;
-          planta.progresso = 0;
+          planta.progresso = 30;
           planta.tempoUltimaFase = Date.now();
         }
       }
@@ -51,36 +51,56 @@ function Fundo() {
     });
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCaixas(prev => {
-        const novo = { ...prev };
+ useEffect(() => {
+  const interval = setInterval(() => {
+    setCaixas(prev => {
+      const novo = { ...prev };
 
-        for (let caixa in novo) {
-          novo[caixa] = novo[caixa].map(planta => {
-            if (!planta) return null;
+      for (let caixa in novo) {
+        novo[caixa] = novo[caixa].map(planta => {
+          if (!planta) return null;
 
-            const tempoParado = Date.now() - (planta.tempoUltimaFase || Date.now());
+          // 🔥 Garante que começa a contar tempo quando chega na última fase
+          if (
+            planta.fase === planta.fases.length - 1 &&
+            !planta.tempoUltimaFase
+          ) {
+            planta.tempoUltimaFase = Date.now();
+          }
 
-            if (planta.fase === planta.fases.length - 1 && tempoParado >= planta.tempoMorte) {
-              return { ...planta, morta: true };
+          const tempoParado = Date.now() - (planta.tempoUltimaFase || Date.now());
+
+          // 🔥 Morre por tempo parado na última fase
+          if (
+            planta.fase === planta.fases.length - 1 &&
+            tempoParado >= planta.tempoMorte &&
+            !planta.morta
+          ) {
+            return { ...planta, morta: true };
+          }
+
+          // 🔥 Morre por barra zerada
+          if (!planta.morta) {
+            const novoProgresso = Math.max(planta.progresso - 1, 0);
+
+            if (novoProgresso === 0) {
+              return { ...planta, progresso: 0, morta: true };
             }
 
-            if (!planta.morta) {
-              const novoProgresso = Math.max(planta.progresso - 1, 0);
-              return { ...planta, progresso: novoProgresso };
-            }
+            return { ...planta, progresso: novoProgresso };
+          }
 
-            return planta;
-          });
-        }
+          return planta;
+        });
+      }
 
-        return novo;
-      });
-    }, 1000);
+      return novo;
+    });
+  }, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
+  return () => clearInterval(interval);
+}, []);
+
 
   const handleDrop = (e, caixa, index) => {
     e.preventDefault();
@@ -104,7 +124,7 @@ function Fundo() {
         tempoMorte: dadosPlanta.tempoMorte,
         recompensa: dadosPlanta.recompensa,
         fase: 0,
-        progresso: 0,
+        progresso: 50, // ✅ Pode ajustar aqui se quiser iniciar mais cheia ou mais vazia
         tempoUltimaFase: Date.now(),
         morta: false
       };
@@ -148,7 +168,7 @@ function Fundo() {
       <div className="terra"></div>
 
       <div className="ContainerGeral">
-        {['caixa1', 'caixa2', 'caixa3'].map((nomeCaixa, caixaIndex) => (
+        {['caixa1', 'caixa3'].map((nomeCaixa, caixaIndex) => (
           <div key={nomeCaixa} className={`ContainerCaixa${caixaIndex + 1}`}>
             {Array(8).fill().map((_, index) => {
               const planta = caixas[nomeCaixa][index];
@@ -178,7 +198,16 @@ function Fundo() {
                         }}
                         onMouseDown={(e) => {
                           if (planta.morta) {
-                            const timeout = setTimeout(() => removerPlanta(nomeCaixa, index), 1500);
+                            if (score < 100) {
+                              alert("Você precisa de 100 pontos para remover uma planta morta.");
+                              return;
+                            }
+
+                            const timeout = setTimeout(() => {
+                              removerPlanta(nomeCaixa, index);
+                              setScore(prev => prev - 100);
+                            }, 1500);
+
                             const clear = () => clearTimeout(timeout);
                             e.target.addEventListener('mouseup', clear, { once: true });
                             e.target.addEventListener('mouseleave', clear, { once: true });
@@ -189,7 +218,15 @@ function Fundo() {
                         <div className="barra-progresso">
                           <div
                             className="progresso"
-                            style={{ width: `${planta.progresso}%` }}
+                            style={{
+                              width: `${planta.progresso}%`,
+                              backgroundColor:
+                                planta.progresso <= 20
+                                  ? 'red'
+                                  : planta.progresso <= 40
+                                    ? 'yellow'
+                                    : 'green'
+                            }}
                           />
                         </div>
                       )}

@@ -142,11 +142,10 @@
   display: flex;
   border-radius: 10px;
   width: 170px;
-  height: auto;
+  height: 100px;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  border: 5px solid #f19946;
 }
 
 /* Botões de Fechar */
@@ -204,7 +203,7 @@
 .vegan-list {
   background-color: #fff5e9;
   width: 440px;
-  height: 260px;
+  height: 180px;
   padding: 10px;
   border-radius: 20px;
   display: flex;
@@ -291,21 +290,20 @@
   font-weight: bold;
   margin: 0 auto;
 }
+  
+.botao_loja-vegan {
+  position: relative;
+  border: 2px solid #f7d325;
+  width: 120px;
+  height: 90px;
+  border-radius: 12px;
+  background-color: #fff4b8;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #3e2e1e;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  z-index: 1000;
 
-.loja-scroll-container {
-  overflow-x: auto;     /* ativa scroll horizontal */
-  overflow-y: hidden;   /* remove barra vertical */
-  white-space: nowrap;  /* mantém os itens em linha */
-  border-bottom: 2px solid #ddd;
-  scrollbar-width: thin; /* Firefox */
-  height: 180px;         /* altura fixa para evitar expansão vertical */
-}
-
-.loja-scroll-container::-webkit-scrollbar {
-  height: 8px;           /* só barra horizontal */
-}
-
-.loja-scroll-container::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
 }
