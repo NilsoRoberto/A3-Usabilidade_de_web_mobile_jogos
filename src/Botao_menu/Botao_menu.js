@@ -148,30 +148,71 @@ function Botao_menu({ score, setScore, inventario, setInventario, upgradeAgua })
               <div className='texto-estilo'><h2>Inventário</h2></div>
               <button className='botao-fechar-inventario' onClick={toggleConteudoInv}></button>
             </div>
+            <div className='inv'>
+              <div
+                className="containerScroll"
+                style={{
+                  maxHeight: '400px',
+                  overflowY: 'auto',
+                  paddingRight: '10px'
+                }}
+              >
+                {inventario.length === 0 && <h4>Inventário vazio.</h4>}
 
-            <div className='inv' style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-              {inventario.length === 0 && <h4>Inventário vazio.</h4>}
-              {inventario.map((nomePlanta, i) => {
-                const plantaData = listaPlantas[nomePlanta];
+                {inventario.map((nomePlanta, i) => {
+                  const planta = listaPlantas[nomePlanta];
 
-                if (!plantaData) {
-                  console.warn(`Planta não encontrada no listaPlantas: ${nomePlanta}`);
-                  return null;
-                }
+                  if (!planta) {
+                    console.warn(`Planta não encontrada no listaPlantas: ${nomePlanta}`);
+                    return null;
+                  }
 
-                return (
-                  <img
-                    key={i}
-                    src={plantaData.imagemFoto}
-                    alt={nomePlanta}
-                    draggable
-                    onDragStart={e => e.dataTransfer.setData("planta", nomePlanta)}
-                    style={{ height: 50, width: 50, cursor: 'grab', borderRadius: 6 }}
-                    title={`Arraste para plantar: ${nomePlanta}`}
-                  />
-                );
-              })}
+                  return (
+                    <div
+                      key={i}
+                      className="ContainerInv"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        border: '1px solid #ccc',
+                        borderRadius: '10px',
+                        padding: '10px',
+                        marginBottom: '15px',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        backgroundColor: '#fff'
+                      }}
+                    >
+                      <img
+                        src={planta.imagemFoto}
+                        alt={planta.nome}
+                        draggable
+                        onDragStart={e => e.dataTransfer.setData("planta", nomePlanta)}
+                        style={{
+                          border: "2px solid brown",
+                          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                          cursor: "grab",
+                          width: "60px",
+                          height: "60px",
+                          borderRadius: "50%",
+                          objectFit: "cover",
+                          padding: "5px",
+                          backgroundColor: '#fdf6f0'
+                        }}
+                        title={`Arraste para plantar: ${planta.nome}`}
+                      />
+
+                      <div className="ContainerInf" style={{ lineHeight: '1.5' }}>
+                        <p><strong>{planta.nome}</strong></p>
+                        <p>Quantidade: {planta.quantidade ?? 0}</p>
+                        <p>Preço: 💰 {planta.preco}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+
           </motion.div>
         )}
 

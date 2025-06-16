@@ -4,16 +4,27 @@ import Botao_menu from '../Botao_menu/Botao_menu';
 import TanqueAgua from '../Botao_menu/TanqueAgua';
 import imgVazia from '../Imagens/teste1.png';
 import listaPlantas from '../Plantas/listaPlantas';
+import { useNavigate } from 'react-router-dom';
+
+
 
 function Fundo() {
   const tanqueRef = useRef();
-  const [score, setScore] = useState(1000);
+  const [score, setScore] = useState(10000);
   const [inventario, setInventario] = useState([]);
-
   const [upgradeAguaFunc, setUpgradeAguaFunc] = useState(null);
+
+  // ✅ Estes são os dois estados que estavam no lugar errado
+  const [hasAskedToQuit, setHasAskedToQuit] = useState(false);
+  const [hasFinishedGame, setHasFinishedGame] = useState(false);
+  const [mostrarModalDesistencia, setMostrarModalDesistencia] = useState(false);
+  const [mostrarModalVitoria, setMostrarModalVitoria] = useState(false);
+  const navigate = useNavigate();
+
   const handleRegisterUpgrade = (funcaoUpgrade) => {
     setUpgradeAguaFunc(() => funcaoUpgrade);
   };
+
 
   const [caixas, setCaixas] = useState({
     caixa1: Array(8).fill(null),
@@ -51,55 +62,67 @@ function Fundo() {
     });
   };
 
- useEffect(() => {
-  const interval = setInterval(() => {
-    setCaixas(prev => {
-      const novo = { ...prev };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCaixas(prev => {
+        const novo = { ...prev };
 
-      for (let caixa in novo) {
-        novo[caixa] = novo[caixa].map(planta => {
-          if (!planta) return null;
+        for (let caixa in novo) {
+          novo[caixa] = novo[caixa].map(planta => {
+            if (!planta) return null;
 
-          // 🔥 Garante que começa a contar tempo quando chega na última fase
-          if (
-            planta.fase === planta.fases.length - 1 &&
-            !planta.tempoUltimaFase
-          ) {
-            planta.tempoUltimaFase = Date.now();
-          }
-
-          const tempoParado = Date.now() - (planta.tempoUltimaFase || Date.now());
-
-          // 🔥 Morre por tempo parado na última fase
-          if (
-            planta.fase === planta.fases.length - 1 &&
-            tempoParado >= planta.tempoMorte &&
-            !planta.morta
-          ) {
-            return { ...planta, morta: true };
-          }
-
-          // 🔥 Morre por barra zerada
-          if (!planta.morta) {
-            const novoProgresso = Math.max(planta.progresso - 1, 0);
-
-            if (novoProgresso === 0) {
-              return { ...planta, progresso: 0, morta: true };
+            // 🔥 Garante que começa a contar tempo quando chega na última fase
+            if (
+              planta.fase === planta.fases.length - 1 &&
+              !planta.tempoUltimaFase
+            ) {
+              planta.tempoUltimaFase = Date.now();
             }
 
-            return { ...planta, progresso: novoProgresso };
-          }
+            const tempoParado = Date.now() - (planta.tempoUltimaFase || Date.now());
 
-          return planta;
-        });
-      }
+            // 🔥 Morre por tempo parado na última fase
+            if (
+              planta.fase === planta.fases.length - 1 &&
+              tempoParado >= planta.tempoMorte &&
+              !planta.morta
+            ) {
+              return { ...planta, morta: true };
+            }
 
-      return novo;
-    });
-  }, 1000);
+            // 🔥 Morre por barra zerada
+            if (!planta.morta) {
+              const novoProgresso = Math.max(planta.progresso - 1, 0);
 
-  return () => clearInterval(interval);
-}, []);
+              if (novoProgresso === 0) {
+                return { ...planta, progresso: 0, morta: true };
+              }
+
+              return { ...planta, progresso: novoProgresso };
+            }
+
+            return planta;
+          });
+        }
+
+        return novo;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (score >= 10000 && !hasAskedToQuit) {
+      setMostrarModalDesistencia(true);
+      setHasAskedToQuit(true);
+    }
+
+    if (score >= 30000 && !hasFinishedGame) {
+      setMostrarModalVitoria(true);
+      setHasFinishedGame(true);
+    }
+  }, [score, hasAskedToQuit, hasFinishedGame]);
 
 
   const handleDrop = (e, caixa, index) => {
@@ -164,7 +187,70 @@ function Fundo() {
 
       <TanqueAgua ref={tanqueRef} onRegisterUpgrade={handleRegisterUpgrade} />
 
-      <div className="score-display">🌟 Score: {score}</div>
+      <div className="score-wrapper">
+        <div className="score-display">🌟 Score: {score}</div>
+        <div className="star-container">
+          {[1, 2, 3].map((n) => {
+            const isActive = score >= n * 10000;
+            return (
+              <span
+                key={n}
+                className={`star ${isActive ? 'active' : ''}`}
+              >
+                ★
+              </span>
+            );
+          })}
+        </div>
+      </div>
+      {mostrarModalDesistencia && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Você atingiu 10.000 pontos!</h2>
+            <p>Deseja desistir do jogo?</p>
+            <div className="modal-buttons">
+              <button onClick={() => {
+                alert("Você desistiu! Obrigado por jogar.");
+                setMostrarModalDesistencia(false);
+              }}>
+                Desistir
+              </button>
+              <button onClick={() => setMostrarModalDesistencia(false)}>
+                Continuar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mostrarModalVitoria && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>🎉 Parabéns!</h2>
+            <p>Você concluiu o jogo com 30.000 pontos!</p>
+            <button onClick={() => {
+              setMostrarModalVitoria(false);
+              navigate('/'); // Altere aqui se sua tela inicial tiver outro caminho
+            }}>
+              Voltar ao Início
+            </button>
+          </div>
+        </div>
+      )}
+
+
+      {mostrarModalVitoria && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>🎉 Parabéns!</h2>
+            <p>Você concluiu o jogo com 30.000 pontos!</p>
+            <button onClick={() => setMostrarModalVitoria(false)}>Fechar</button>
+          </div>
+        </div>
+      )}
+
+
+
       <div className="terra"></div>
 
       <div className="ContainerGeral">
@@ -243,5 +329,6 @@ function Fundo() {
     </>
   );
 }
+
 
 export default Fundo;
