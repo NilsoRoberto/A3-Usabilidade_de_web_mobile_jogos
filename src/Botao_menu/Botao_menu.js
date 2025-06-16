@@ -162,8 +162,8 @@ function Botao_menu({
 
                       <div className="ContainerInf" style={{ lineHeight: '1.5' }}>
                         <p><strong>{planta.nome}</strong></p>
-                        <p>Quantidade: {planta.quantidade ?? 0}</p>
-                        <p>Preço: 💰 {planta.preco}</p>
+                        <p>Recompensa: {planta.recompensa}</p>
+                        <p>Preço: 💰 R${planta.preco}</p>
                       </div>
                     </div>
                   );
@@ -206,28 +206,7 @@ function Botao_menu({
                   </motion.div>
                 </div>
 
-                <div className="item-loja">
-                  <div className="harvest-icon"></div>
-                  <div className="preco-upgrade">R${precoUpgradeColheita}</div>
-                  <motion.div whileTap={{ scale: 0.80, y: 2 }} transition={{ type: "spring", stiffness: 300 }}>
-                    <button
-                      className="botao_loja"
-                      style={{ backgroundColor: dinheiro >= precoUpgradeColheita ? '#6FCF97' : '#EB5757' }}
-                      onClick={() => {
-                        if (dinheiro >= precoUpgradeColheita && upgradeColheita) {
-                          handleCompra(precoUpgradeColheita);
-                          setPrecoUpgradeColheita(prev => prev * 2);
-                          upgradeColheita();
-                        } else {
-                          playSound('/sons/erro.mp3');
-                          alert("Dinheiro insuficiente ou upgrade não disponível!");
-                        }
-                      }}
-                    >
-                      Upgrade Colheita
-                    </button>
-                  </motion.div>
-                </div>
+                
 
                 <div className="item-loja">
                   <div className="vegetables-icon"></div>
@@ -251,6 +230,30 @@ function Botao_menu({
                     </button>
                   </motion.div>
                 </div>
+
+                <div className="item-loja">
+                  <div className="harvest-icon"></div>
+                  <div className="preco-upgrade">R${precoUpgradeColheita}</div>
+                  <motion.div whileTap={{ scale: 0.80, y: 2 }} transition={{ type: "spring", stiffness: 300 }}>
+                    <button
+                      className="botao_loja"
+                      style={{ backgroundColor: dinheiro >= precoUpgradeColheita ? '#6FCF97' : '#EB5757' }}
+                      onClick={() => {
+                        if (dinheiro >= precoUpgradeColheita && upgradeColheita) {
+                          handleCompra(precoUpgradeColheita);
+                          setPrecoUpgradeColheita(prev => prev * 2);
+                          upgradeColheita();
+                        } else {
+                          playSound('/sons/erro.mp3');
+                          alert("Dinheiro insuficiente ou upgrade não disponível!");
+                        }
+                      }}
+                    >
+                      Upgrade Colheita
+                    </button>
+                  </motion.div>
+                </div>
+
               </div>
             </div>
           </motion.div>

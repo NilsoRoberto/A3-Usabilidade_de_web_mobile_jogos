@@ -12,7 +12,7 @@ function Fundo() {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const tanqueRef = useRef();
   const [dinheiro, setDinheiro] = useState(1000);
-  const [score, setScore] = useState(1000);
+  const [score, setScore] = useState(0);
   const [inventario, setInventario] = useState([]);
   const navigate = useNavigate();
 

@@ -2,7 +2,7 @@ import cenouraFase1 from '../Imagens/cenouraFase1.png';
 import cenouraFase2 from '../Imagens/cenouraFase2.png';
 import cenouraFase3 from '../Imagens/cenouraFase3.png';
 import cenouraMorto from '../Imagens/cenouraMorto.png';
-import cenouraFoto from '../Imagens/cenouraFoto.png';
+import cenouraFoto from '../Imagens/CenouraFoto.png';
 
 import alfaceFase1 from '../Imagens/alfaceFase1.png';
 import alfaceFase2 from '../Imagens/alfaceFase2.png';
