@@ -4,6 +4,8 @@ import Botao_menu from '../Botao_menu/Botao_menu';
 import TanqueAgua from '../Botao_menu/TanqueAgua';
 import imgVazia from '../Imagens/teste1.png';
 import listaPlantas from '../Plantas/listaPlantas';
+import EventoProfessor from '../Eventos/EventoProfessor';
+
 
 function Fundo() {
   const tanqueRef = useRef();
@@ -203,6 +205,7 @@ function Fundo() {
           </div>
         ))}
       </div>
+      <EventoProfessor />
     </>
   );
 }

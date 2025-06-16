@@ -1,0 +1,164 @@
+
+  .professor-interativo {
+    position: absolute;
+    left: 229px;
+    top: 16px;
+    cursor: pointer;
+  }
+  
+  .personagem-img {
+    width: 190px;
+    height: auto;
+  }
+  
+  .animar-surgir {
+    animation: subirDoChao 1s ease-out;
+  }
+  
+  @keyframes subirDoChao {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .balao-clique {
+    position: absolute;
+    top: 10px; /* altura em relação ao topo do personagem */
+    right: 150px; /* para ir para a esquerda do personagem */
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 14px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    animation: piscar 1s infinite;
+    z-index: 10;
+    max-width: 160px;
+  }
+  
+  .balao-seta {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: -12px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 12px solid white; /* seta apontando para a direita */
+  }
+  
+  
+  @keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  
+  .dialogo-container {
+    position: absolute;
+    width: 80vw; /* mais largura na tela */
+    left: 10vw;  /* centralizado horizontalmente */
+    top: 400px;  /* ajuste conforme o personagem */
+    background-color: #1c1c1c;
+    color: white;
+    border: 2px solid #000;
+    border-radius: 16px;
+    padding: 16px 24px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 16px;
+    z-index: 10;
+    box-shadow: 4px 4px 12px rgba(0,0,0,0.3);
+    max-width: none; /* remove o limite fixo antigo */
+  }
+.botao_quiz{
+    margin-top: 10px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+}  
+
+.btn-dialogo {
+    margin-top: 10px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  
+  .btn-resposta {
+    display: block;
+    margin: 5px 0;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  /* Caixa de diálogo mais elevada */
+.dialogo-container {
+    top: 320px; /* mais para cima */
+    /* o resto permanece igual */
+  }
+  
+  /* Botões padrão */
+  .btn-resposta {
+    display: block;
+    margin: 5px 0;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  /* Botão correto */
+  .btn-resposta.correta {
+    background-color: #6fcf97; /* verde */
+    border-color: #27ae60;
+    color: white;
+  }
+  
+  /* Botão errado */
+  .btn-resposta.errada {
+    background-color: #e57373; /* vermelho */
+    border-color: #c0392b;
+    color: white;
+  }
+  
+  /* Botões comuns */
+  .btn-dialogo {
+    margin-top: 10px;
+    font-family: 'Pixel Emulator', sans-serif;
+    font-size: 14px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+  }
+  
+
+  
+  

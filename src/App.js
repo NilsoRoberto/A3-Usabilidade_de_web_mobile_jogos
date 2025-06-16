@@ -12,6 +12,7 @@ import VerificarCodigo from './Login/VerificarCodigo';
 import "./Login/Login.css";
 import Sobre from "./Login/Sobre";
 import ResetSenha from './Login/ResetSenha';
+import Professor from './Eventos/Professor.js';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/sobre' element={<Sobre />}/>
         <Route path='/reset' element={<ResetSenha />}/>
         <Route path="/menu" element={<Fundo />} />
+        <Route path='/professor' element={<Professor />}/>
       </Routes>
     </Router>                 
     {/* <Botao_menu></Botao_menu>
