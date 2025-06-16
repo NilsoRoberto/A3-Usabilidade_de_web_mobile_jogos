@@ -5,14 +5,16 @@ import TanqueAgua from '../Botao_menu/TanqueAgua';
 import imgVazia from '../Imagens/teste1.png';
 import listaPlantas from '../Plantas/listaPlantas';
 import { useNavigate } from 'react-router-dom';
+import { useGameState } from '../GameState';
 
 function Fundo() {
   // Estados básicos do jogo
+  
   const [loadingIndex, setLoadingIndex] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const tanqueRef = useRef();
   const [dinheiro, setDinheiro] = useState(1000);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(1000);
   const [inventario, setInventario] = useState([]);
   const navigate = useNavigate();
 
@@ -66,7 +68,7 @@ function Fundo() {
       return;
     }
 
-    tanque.useWater(1);
+    tanque.useWater(2.5);
 
     setCaixas(prev => {
       const novaCaixa = [...prev[caixa]];
@@ -256,6 +258,7 @@ function Fundo() {
             <div className="modal-buttons">
               <button onClick={() => {
                 alert("Você desistiu! Obrigado por jogar.");
+                navigate('/login');
                 setMostrarModalDesistencia(false);
               }}>
                 Desistir
@@ -275,7 +278,7 @@ function Fundo() {
             <p>Você concluiu o jogo com 30.000 pontos!</p>
             <button onClick={() => {
               setMostrarModalVitoria(false);
-              navigate('/');
+              navigate('/login');
             }}>
               Voltar ao Início
             </button>
