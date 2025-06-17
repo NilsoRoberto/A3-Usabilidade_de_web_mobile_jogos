@@ -240,7 +240,6 @@ function Fundo() {
       <div className="score-display">🌟 Score: {score}</div>
       <div className="dinheiro-display">💰 Dinheiro: R${dinheiro}</div>
       <div className="score-wrapper">
-        <div className="score-display">🌟 Score: {score}</div>
         <div className="star-container">
           {[1, 2, 3].map((n) => {
             const isActive = score >= n * 10000;
