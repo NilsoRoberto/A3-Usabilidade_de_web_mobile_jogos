@@ -25,7 +25,7 @@ function Botao_menu({
   const [mostrarQuest, setMostrarQuest] = useState(false);
   const [mostrarVegan, setMostrarVegan] = useState(false);
   const [precoUpgradeAgua, setPrecoUpgradeAgua] = useState(100);
-  const [precoUpgradeColheita, setPrecoUpgradeColheita] = useState(200);
+  const [precoUpgradeColheita, setPrecoUpgradeColheita] = useState(400);
   const [precoUpgradeVenda, setPrecoUpgradeVenda] = useState(300);
 
   const handleCompra = (preco) => {

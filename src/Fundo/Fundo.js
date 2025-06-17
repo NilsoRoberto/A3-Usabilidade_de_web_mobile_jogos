@@ -6,15 +6,22 @@ import imgVazia from '../Imagens/teste1.png';
 import listaPlantas from '../Plantas/listaPlantas';
 import { useNavigate } from 'react-router-dom';
 import { useGameState } from '../GameState';
+import EventoProfessor from '../Eventos/EventoProfessor';
+
 
 function Fundo() {
+
+  const handleAcertarPergunta = (pontos) => {
+  setScore(prevScore => prevScore + pontos);
+  setDinheiro(prevDinheiro => prevDinheiro + pontos);
+};
   // Estados básicos do jogo
   
   const [loadingIndex, setLoadingIndex] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const tanqueRef = useRef();
-  const [dinheiro, setDinheiro] = useState(1000);
-  const [score, setScore] = useState(1000);
+  const [dinheiro, setDinheiro] = useState(100);
+  const [score, setScore] = useState(0);
   const [inventario, setInventario] = useState([]);
   const navigate = useNavigate();
 
@@ -136,12 +143,12 @@ function Fundo() {
 
   // Efeito para verificar vitória/desistência
   useEffect(() => {
-    if (score >= 10000 && !hasAskedToQuit) {
+    if (score >= 1000 && !hasAskedToQuit) {
       setMostrarModalDesistencia(true);
       setHasAskedToQuit(true);
     }
 
-    if (score >= 30000 && !hasFinishedGame) {
+    if (score >= 3000 && !hasFinishedGame) {
       setMostrarModalVitoria(true);
       setHasFinishedGame(true);
     }
@@ -399,6 +406,7 @@ function Fundo() {
           </div>
         ))}
       </div>
+      <EventoProfessor onAcertarPergunta={handleAcertarPergunta} />
     </>
   );
 }
