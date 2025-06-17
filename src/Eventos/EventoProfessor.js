@@ -8,7 +8,7 @@ const EventoProfessor = () => {
     // Exibir pela primeira vez após 10s (para testes, depois troque para 300000 = 5 min)
     const timeout = setTimeout(() => {
       setMostrar(true);
-    }, 150000);
+    }, 1500);
 
     // Repetir a cada 5 minutos
     const intervalo = setInterval(() => {
