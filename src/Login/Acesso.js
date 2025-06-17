@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import "./Cadastro.css";
-import Botao_menu from '../Botao_menu/Botao_menu.js';
 
 
 function Acesso() {
@@ -33,7 +32,7 @@ function Acesso() {
         setMensagem(<span className="erro">{data.error}</span>);
       }
     } catch (error) {
-      navigate("/menu") // ou para a página desejada, tipo: navigate('/dashboard')
+      // ou para a página desejada, tipo: navigate('/dashboard')
       setMensagem(<span className="erro">Erro ao conectar com o servidor.</span>);
     }
   };

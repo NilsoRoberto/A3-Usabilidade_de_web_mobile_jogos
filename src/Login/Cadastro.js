@@ -23,7 +23,7 @@ function Cadastro() {
         setMensagem(<span className="bemvindo">Cadastro concluido com sucesso!</span>);
         //navigate("/");  // redireciona para a página inicial (ou a que desejar)
         setTimeout(() => {
-          navigate("/", { state: { email } });
+          navigate("/login", { state: { email } });
         }, 1000);
       } else {
         const errorData = await response.json();
