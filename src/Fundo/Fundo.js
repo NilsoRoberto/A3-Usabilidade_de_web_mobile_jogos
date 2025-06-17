@@ -20,7 +20,7 @@ function Fundo() {
   const [loadingIndex, setLoadingIndex] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const tanqueRef = useRef();
-  const [dinheiro, setDinheiro] = useState(100);
+  const [dinheiro, setDinheiro] = useState(300);
   const [score, setScore] = useState(0);
   const [inventario, setInventario] = useState([]);
   const navigate = useNavigate();
@@ -242,7 +242,7 @@ function Fundo() {
       <div className="score-wrapper">
         <div className="star-container">
           {[1, 2, 3].map((n) => {
-            const isActive = score >= n * 10000;
+            const isActive = score >= n * 1000;
             return (
               <span
                 key={n}
@@ -259,7 +259,7 @@ function Fundo() {
       {mostrarModalDesistencia && (
         <div className="modal-overlay">
           <div className="modal">
-            <h2>Você atingiu 10.000 pontos!</h2>
+            <h2>Você atingiu 1.000 pontos!</h2>
             <p>Deseja desistir do jogo?</p>
             <div className="modal-buttons">
               <button onClick={() => {
@@ -281,7 +281,7 @@ function Fundo() {
         <div className="modal-overlay">
           <div className="modal">
             <h2>🎉 Parabéns!</h2>
-            <p>Você concluiu o jogo com 30.000 pontos!</p>
+            <p>Você concluiu o jogo com 3.000 pontos!</p>
             <button onClick={() => {
               setMostrarModalVitoria(false);
               navigate('/login');

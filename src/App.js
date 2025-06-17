@@ -26,6 +26,7 @@ function App() {
         <Route path='/sobre' element={<Sobre />}/>
         <Route path='/reset' element={<ResetSenha />}/>
         <Route path="/menu" element={<Fundo />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>                 
     {/* <Botao_menu></Botao_menu>
